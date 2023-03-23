@@ -1,0 +1,2 @@
+# About
+This manual is implemented as a web page on GitHub. If you notice something missing or out of date, please submit an issue on GitHub or send an email. I will do my best to address the issue promptly, but be aware that there may be a delay in response, as I am currently stateside. 
