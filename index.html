@@ -8,6 +8,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="./main.js"></script>
+
 <style>
   .sidenav {
     height: 100%;
@@ -50,9 +53,11 @@
           Sections
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" onclick="changeSection('Home')">Home</a>
-          <a class="dropdown-item" href="#" onclick="changeSection('Section 1')">Section 1</a>
-          <a class="dropdown-item" href="#" onclick="changeSection('Section 2')">Section 2</a>
+          <a class="dropdown-item" href="#" onclick="changeSection('0 Home')">Home</a>
+          <a class="dropdown-item" href="#" onclick="changeSection('1 Events and Responsibilities')">Events and Responsibilities</a>
+          <a class="dropdown-item" href="#" onclick="changeSection('2 Common Tasks')">Common Tasks</a>
+          <a class="dropdown-item" href="#" onclick="changeSection('3 Collaboration and Communication')">Collaboration and Communication</a>
+          <a class="dropdown-item" href="#" onclick="changeSection('4 Resources and Tools')">Resources and Tools</a>
         </div>
       </li>
     </ul>
@@ -63,55 +68,7 @@
 </div>
 
 <div class="main" id="mainContent">
-  <h2>Welcome to Lilyvale NLT Manual</h2>
-  <p>Select a section and chapter from the navigation to begin.</p>
 </div>
-
-<script>
-  const sections = {
-    'Section 1': ['Chapter 1.1', 'Chapter 1.2', 'Chapter 1.3'],
-    'Section 2': ['Chapter 2.1', 'Chapter 2.2', 'Chapter 2.3'],
-  };
-
-  const chaptersContent = {
-    'Chapter 1.1': 'Content of Chapter 1.1',
-    'Chapter 1.2': 'Content of Chapter 1.2',
-    'Chapter 1.3': 'Content of Chapter 1.3',
-    'Chapter 2.1': 'Content of Chapter 2.1',
-    'Chapter 2.2': 'Content of Chapter 2.2',
-    'Chapter 2.3': 'Content of Chapter 2.3',
-    };
-
-    function changeSection(sectionName) {
-    document.getElementById('currentSection').innerText = sectionName;
-    document.getElementById('sidenav').innerHTML = '';
-    if (sectionName === 'Home') {
-  document.getElementById('mainContent').innerHTML = `
-    <h2>Welcome to Lilyvale NLT Manual</h2>
-    <p>Select a section and chapter from the navigation to begin.</p>
-  `;
-  return;
-  }
-
-  const chapters = sections[sectionName];
-  chapters.forEach(chapter => {
-    const chapterLink = document.createElement('a');
-    chapterLink.innerText = chapter;
-    chapterLink.href = '#';
-    chapterLink.onclick = () => changeChapter(chapter);
-    document.getElementById('sidenav').appendChild(chapterLink);
-  });
-
-  changeChapter(chapters[0]);
-  }
-
-  function changeChapter(chapterName) {
-  document.getElementById('mainContent').innerHTML = `
-    <h2>${chapterName}</h2>
-    <p>${chaptersContent[chapterName]}</p>
-  `;
-}
-</script>
 
 </body>
 </html>
