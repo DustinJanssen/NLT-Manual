@@ -1,45 +1,35 @@
-async function fetchSection(sectionName) {
-  try {
-    const response = await fetch(`content/${sectionName}`);
-    const text = await response.text();
-    const files = text.match(/<a href="(.*?)">/g).map(a => a.slice(9, -2));
-    const chapters = files.filter(file => file.endsWith('.md'));
+const sections = {
+  'Home': ['Introduction.html', 'About.html', 'Job Description.html', 'Lilyvale Culture Notes.html'],
+  'Events and Responsibilities': ['Enkai.html', 'Assembly and Morning Announcements.html', 'Cermonies.html', 'Exhibition.html', 'Eiken.html', 'Speech Contest.html', 'Christmas Assembly.html', "Sports' Day/Marathon.html", 'Speaking Test.html', 'Open School.html', 'Year Preperation.html'],
+  'Common Tasks': ['Re-Test.html', 'Cleaning.html', 'Rotational Duties.html', 'Grading.html', 'Material Preparation.html', 'Lesson Preparation.html'],
+  'Collaboration and Communication': ['Working with T1.html', 'Admin and Staff.html', 'Students and Parents.html'],
+  'Resources and Tools': ['Textbooks and Supplementary Materials.html', 'Technology in the Classroom.html', 'Websites and Online Resources.html', 'Classroom Managemetn Techniques.html']
+};
 
-    return chapters;
-  } catch (error) {
-    console.error('Error fetching section:', error);
-  }
-}
-
-async function fetchChapter(sectionName, chapterName) {
-  try {
-    const response = await fetch(`content/${sectionName}/${chapterName}`);
-    const markdown = await response.text();
-    const html = marked(markdown);
-
-    return html;
-  } catch (error) {
-    console.error('Error fetching chapter:', error);
-  }
-}
-
-async function changeSection(sectionName) {
+function changeSection(sectionName) {
   document.getElementById('currentSection').innerText = sectionName;
   document.getElementById('sidenav').innerHTML = '';
 
-  const chapters = await fetchSection(sectionName);
-  chapters.forEach(chapter => {
+  sections[sectionName].array.forEach(chapter => {
     const chapterLink = document.createElement('a');
-    chapterLink.innerText = chapter.replace('.md', '');
+    chapterLink.innerText = chapter;
     chapterLink.href = '#';
     chapterLink.onclick = () => changeChapter(sectionName, chapter);
     document.getElementById('sidenav').appendChild(chapterLink);
   });
 
-  changeChapter(sectionName, chapters[0]);
+  if (sectionName === 'Start') {
+    document.getElementById('Start').innerHTML = `
+    <h2>Welcome to the Lilyvale NLT Manual</h2>
+    <p>Select a section and chapter from the navigation to begin.</p>
+    `;
+    return;
+  }
+
+  changeChapter(sectionName, sections[sectionName][0]);
 }
 
-async function changeChapter(sectionName, chapterName) {
-  const htmlContent = await fetchChapter(sectionName, chapterName);
-  document.getElementById('mainContent').innerHTML = htmlContent;
+function changeChapter(sectionName, chapterName) {
+  const iframeSrc = `content/${sectionName}/${chapterName}.html`;
+  document.getElementById('mainContent').innerHTML = `<iframe src="${iframeSrc}" frameborder="0" style="width: 100%; height: 100%;"></iframe>`;
 }
