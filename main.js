@@ -1,30 +1,22 @@
 const sections = {
-  'Home': ['Introduction.html', 'About.html', 'Job Description.html', 'Lilyvale Culture Notes.html'],
-  'Events and Responsibilities': ['Enkai.html', 'Assembly and Morning Announcements.html', 'Cermonies.html', 'Exhibition.html', 'Eiken.html', 'Speech Contest.html', 'Christmas Assembly.html', "Sports' Day/Marathon.html", 'Speaking Test.html', 'Open School.html', 'Year Preperation.html'],
-  'Common Tasks': ['Re-Test.html', 'Cleaning.html', 'Rotational Duties.html', 'Grading.html', 'Material Preparation.html', 'Lesson Preparation.html'],
-  'Collaboration and Communication': ['Working with T1.html', 'Admin and Staff.html', 'Students and Parents.html'],
-  'Resources and Tools': ['Textbooks and Supplementary Materials.html', 'Technology in the Classroom.html', 'Websites and Online Resources.html', 'Classroom Managemetn Techniques.html']
+  'Home': ['Introduction', 'About', 'Job Description', 'Lilyvale Culture Notes'],
+  'Events and Responsibilities': ['Enkai', 'Assembly and Morning Announcements', 'Cermonies', 'Exhibition', 'Eiken', 'Speech Contest', 'Christmas Assembly', "Sports' Day/Marathon", 'Speaking Test', 'Open School', 'Year Preperation'],
+  'Common Tasks': ['Re-Test', 'Cleaning', 'Rotational Duties', 'Grading', 'Material Preparation', 'Lesson Preparation'],
+  'Collaboration and Communication': ['Working with T1', 'Admin and Staff', 'Students and Parents'],
+  'Resources and Tools': ['Textbooks and Supplementary Materials', 'Technology in the Classroom', 'Websites and Online Resources', 'Classroom Managemetn Techniques']
 };
 
 function changeSection(sectionName) {
   document.getElementById('currentSection').innerText = sectionName;
   document.getElementById('sidenav').innerHTML = '';
 
-  sections[sectionName].array.forEach(chapter => {
+  sections[sectionName].forEach(chapter => {
     const chapterLink = document.createElement('a');
     chapterLink.innerText = chapter;
     chapterLink.href = '#';
     chapterLink.onclick = () => changeChapter(sectionName, chapter);
     document.getElementById('sidenav').appendChild(chapterLink);
   });
-
-  if (sectionName === 'Start') {
-    document.getElementById('Start').innerHTML = `
-    <h2>Welcome to the Lilyvale NLT Manual</h2>
-    <p>Select a section and chapter from the navigation to begin.</p>
-    `;
-    return;
-  }
 
   changeChapter(sectionName, sections[sectionName][0]);
 }
