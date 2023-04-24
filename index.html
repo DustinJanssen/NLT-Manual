@@ -1,46 +1,111 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lilyvale NLT Manual</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="main.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="./main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lilyvale NLT Manual</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <link href="index.css" rel="stylesheet">
+  <script src="./index.js"></script>
 </head>
+
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <title class="navbar-brand">Lilyvale NLT Manual: </title><span class="navbar-brand" id="currentSection">Home</span>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Sections
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" onclick="changeSection('Home')">Home</a>
-          <a class="dropdown-item" href="#" onclick="changeSection('Events and Responsibilities')">Events and Responsibilities</a>
-          <a class="dropdown-item" href="#" onclick="changeSection('Common Tasks')">Common Tasks</a>
-          <a class="dropdown-item" href="#" onclick="changeSection('Collaboration and Communication')">Collaboration and Communication</a>
-          <a class="dropdown-item" href="#" onclick="changeSection('Resources and Tools')">Resources and Tools</a>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Lilyvale NLT Manual</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Chapter Select</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </li>
-    </ul>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Introduction.html')">Introduction</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/About.html')">About</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Job Description.html')">Job Description</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Lilyvale Culture Notes.html')">Lilyvale Culture Notes</button></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Events and Responsibilities
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Enkai.html')">Enkai</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Assembly.html')">Assembly</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Ceremonies</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Eiken.html')">Eiken</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Chorus Festival.html')">Chorus Festival</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Speech Contest.html')">Speech Contest</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Christmas Assembly.html')">Christmas Assembly</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Exhibition.html')">Exhibition</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Sports.html')">Sports' Day / Marathon</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Speaking Test.html')">Speaking Test</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Open School.html')">Open School</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Year Preparations.html')">Year Preparations</button></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Common Tasks
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Re-tests.html')">Re-tests</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Cleaning.html')">Cleaning</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Rotational Duties.html')">Rotational Duties</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Grading.html')">Grading</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/Materials Preparation.html')">Materials Preparation</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Lesson Preparation</button></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Collaboration and Communication
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Working with T1</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Admin and Staff</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Students and Parents</button></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Resources and Tools
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Textbooks and Supplementary Materials</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Technology in the Classroom</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Websites and Online Resources</button></li>
+                <li><button class="dropdown-item" onclick="loadChapter('./content/Home/PLANNED.html')">Classroom Management Techniques</button></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content ratio ratio-1x1">
+    <iframe id="chapter-content" src="./content/Home/Introduction.html"></iframe>
   </div>
-</nav>
-
-<div class="sidenav" id="sidenav">
-</div>
-
-<div class="main" id="mainContent">
-</div>
 
 </body>
+
 </html>
