@@ -3,6 +3,23 @@
   width: 90%;
 }
 
-body {
-  background-color: darkgrey;
+#main-body {
+  background-color: lightgray;
+}
+
+h1 {
+  padding-top: 10px;
+}
+
+h3 {
+  padding-left: 25px;
+}
+
+p {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+audio {
+  margin: 25px;
 }
