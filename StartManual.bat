@@ -8,5 +8,5 @@ if %errorlevel% neq 0 (
 )
 
 start python -m http.server 8080
-timeout /t 2
+timeout /t 4
 start "" http://localhost:8080
